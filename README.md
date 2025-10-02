@@ -66,8 +66,6 @@ dbt docs serve
 
 This document describes the structure and purpose of the models in the Snowflake dbt project.
 
----
-
 ## Models
 
 ### Staging Layer (Silver)
@@ -83,8 +81,6 @@ This document describes the structure and purpose of the models in the Snowflake
 **Tests:**
 - `o_orderkey` is unique
 - `o_orderkey` is not null
-
----
 
 ### Analytics Layer (Gold)
 
