@@ -81,6 +81,7 @@ This document describes the structure and purpose of the models in the Snowflake
 **Tests:**
 - `o_orderkey` is unique
 - `o_orderkey` is not null
+-  `o_custkey` → Validates that every order references an existing customer (customer.c_custkey), enforcing referential integrity.
 
 ### Analytics Layer (Gold)
 
