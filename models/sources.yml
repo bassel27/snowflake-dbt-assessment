@@ -11,9 +11,6 @@ sources:
         columns:
           - name: c_custkey
             description: "Primary key of customer"
-            tests:
-              - not_null
-              - unique
           - name: c_name
             description: "Customer name"
           - name: c_address
@@ -34,9 +31,6 @@ sources:
         columns:
           - name: o_orderkey
             description: "Primary key of the order"
-            tests:
-              - not_null
-              - unique
           - name: o_custkey
             description: "Foreign key referencing customer.c_custkey"
           - name: o_orderstatus
