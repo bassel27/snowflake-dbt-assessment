@@ -12,7 +12,20 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 #### 2. Install dbt with Snowflake Adapter
 `pip install dbt-snowflake`
 
-#### 3. Configure Snowflake Connection
+#### 3. Prepare Snowflake Environment 
+Before configuring profiles.yml, you need to create a warehouse, database, and schema in your Snowflake trial account.
+Run the following SQL in your Snowflake console:
+```
+CREATE WAREHOUSE dev_wh
+WITH WAREHOUSE_SIZE = 'XSMALL'
+AUTO_SUSPEND = 60
+AUTO_RESUME = TRUE
+INITIALLY_SUSPENDED = TRUE;
+
+CREATE OR REPLACE DATABASE TPCH_TRANSFORMED;
+```
+
+#### 4. Configure Snowflake Connection
 Update your `profiles.yml` (CLI) or dbt Cloud connection settings with:
 
 ```yaml
@@ -31,17 +44,17 @@ snowflake_tpch_demo:
   target: dev
 ```
 
-#### 4. Run Models
+#### 5. Run Models
 ```bash
 dbt run
 ```
 
-#### 5. Run Tests
+#### 6. Run Tests
 ```bash
 dbt test
 ```
 
-#### 6. Generate Documentation
+#### 7. Generate Documentation
 ```bash
 dbt docs generate
 dbt docs serve
