@@ -12,14 +12,14 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 #### 2. Install Dependenices With Poetry
 Dependenices include dbt-snowflake
 `poetry install`
-`poetry env activate`
+`poetry shell`
 
 #### 3. Prepare Snowflake Environment 
 Before configuring profiles.yml, you need to create a warehouse, database, and schema in your Snowflake trial account.
 Run the following SQL in your Snowflake console or worksheet:
 ```
 CREATE WAREHOUSE dev_wh
-WITH WAREHOUSE_SIZE = 'XSMALL'
+WITH WAREHOUSE_SIZE = 'XSMALL'	
 AUTO_SUSPEND = 60
 AUTO_RESUME = TRUE
 INITIALLY_SUSPENDED = TRUE;
