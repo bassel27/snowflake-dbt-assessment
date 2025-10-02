@@ -16,19 +16,19 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 Update your `profiles.yml` (CLI) or dbt Cloud connection settings with:
 
 ```yaml
-snowflake-dbt-assessment:
-  target: dev
+snowflake_tpch_demo:
   outputs:
     dev:
-      type: snowflake
       account: your-snowflake-account
-      user: your-username
-      password: your-password
-      role: your-role
-      warehouse: DEV_WH
       database: TPCH_TRANSFORMED
-      schema: DEV
+      password: your-password
+      role: ACCOUNTADMIN
+      schema: dev   
       threads: 4
+      type: snowflake
+      user: your-username
+      warehouse: dev_wh
+  target: dev
 ```
 
 #### 4. Run Models
