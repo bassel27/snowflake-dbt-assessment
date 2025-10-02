@@ -9,10 +9,10 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 `cd snowflake-dbt-assessment`
 
 
-### 2. Install dbt with Snowflake Adapter
+#### 2. Install dbt with Snowflake Adapter
 `pip install dbt-snowflake`
 
-### 3. Configure Snowflake Connection
+#### 3. Configure Snowflake Connection
 Update your `profiles.yml` (CLI) or dbt Cloud connection settings with:
 
 ```yaml
@@ -31,17 +31,17 @@ snowflake-dbt-assessment:
       threads: 4
 ```
 
-### 4. Run Models
+#### 4. Run Models
 ```bash
 dbt run
 ```
 
-### 5. Run Tests
+#### 5. Run Tests
 ```bash
 dbt test
 ```
 
-### 6. Generate Documentation
+#### 6. Generate Documentation
 ```bash
 dbt docs generate
 dbt docs serve
