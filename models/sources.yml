@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: tpch
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: tpch_sf1
+    tables:
+      - name: customer
+      - name: orders
+      - name: lineitem

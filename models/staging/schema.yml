@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Silver layer orders with customer name and derived columns"
+    columns:
+      - name: o_orderkey
+        description: "Primary key of orders"
+        tests:
+          - unique
+          - not_null
+      - name: o_custkey
+        description: "Customer key"
+      - name: c_name
+        description: "Customer name from customer table"
+      - name: order_year
+        description: "Year extracted from order date"
+      - name: total_price
+        description: "Order total price"

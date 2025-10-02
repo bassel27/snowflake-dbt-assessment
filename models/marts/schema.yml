@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: customer_revenue
+    description: "Gold layer: aggregated revenue per customer"
+    columns:
+      - name: c_custkey
+        description: "Primary key of customer"
+        tests:
+          - not_null
+      - name: customer_name
+        description: "Customer name"
+      - name: total_revenue
+        description: "Total revenue per customer"
