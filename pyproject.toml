@@ -7,6 +7,7 @@ authors = ["bassel27 <bassel_sabour@hotmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.11"
 dbt-snowflake = ">=1.10.2,<2.0.0"
+poetry-plugin-shell = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
