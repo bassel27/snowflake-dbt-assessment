@@ -28,7 +28,7 @@ CREATE OR REPLACE DATABASE TPCH_TRANSFORMED;
 ```
 
 #### 4. Configure Snowflake Connection
-Update your `profiles.yml` (CLI) or dbt Cloud connection settings with:
+Locate your profiles.yml file at ~/.dbt/profiles.yml (Mac/Linux) or C:\Users\<username>\.dbt\profiles.yml (Windows). Update it with your Snowflake credentials:
 
 ```yaml
 snowflake_tpch_demo:
