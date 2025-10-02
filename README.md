@@ -62,29 +62,43 @@ dbt docs generate
 dbt docs serve
 ```
 
+# dbt Models Documentation
+
+This document describes the structure and purpose of the models in the Snowflake dbt project.
+
+---
+
 ## Models
 
 ### Staging Layer (Silver)
-•	stg_orders
-	•	Source: orders table joined with customer.
-	•	Purpose: Creates a cleaned, enriched version of orders with customer information.
-	•	Derived columns:
-		•	order_year → extracted from o_orderdate.
-		•	total_price → carried from TPCH base table.
-		•	Tests:
-		•	o_orderkey is unique.
-		•	o_orderkey is not null.
+
+**Model:** `stg_orders`  
+**Source:** `orders` table joined with `customer` table  
+**Purpose:** Creates a cleaned and enriched version of orders with customer information  
+
+**Derived Columns:**
+- `order_year` – extracted from `o_orderdate`
+- `total_price` – carried from TPCH base table
+
+**Tests:**
+- `o_orderkey` is unique
+- `o_orderkey` is not null
+
+---
 
 ### Analytics Layer (Gold)
-•	customer_revenue
-	•	Source: Joins orders with lineitem.
-	•	Purpose: Aggregates total revenue per customer.
-	•	Business logic:
-		•	Revenue = SUM(l_extendedprice * (1 - l_discount)).
-		•	Grouped by: c_custkey (customer key).
-		•	Includes: Customer name for readability in downstream analytics.
-		•	Tests:
-	      	•	c_custkey is not null (ensures valid customers).
+
+**Model:** `customer_revenue`  
+**Source:** Joins `orders` with `lineitem`  
+**Purpose:** Aggregates total revenue per customer  
+
+**Business Logic:**
+- Revenue = `SUM(l_extendedprice * (1 - l_discount))`
+- Grouped by `c_custkey` (customer key)
+- Includes `customer_name` for readability in downstream analytics
+
+**Tests:**
+- `c_custkey` is not null (ensures valid customers)
 
 ## Deployment / Scheduling
 **In dbt Cloud:**
