@@ -82,7 +82,7 @@ dbt docs serve
 
 This document describes the structure and purpose of the models in the Snowflake dbt project.
 
-# Models
+## Models
 
 ### Staging Layer (Silver)
 
