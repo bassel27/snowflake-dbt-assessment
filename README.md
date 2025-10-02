@@ -2,6 +2,23 @@
 
 This project demonstrates using dbt (data build tool) with Snowflake to transform TPC-H sample data into analytics-ready tables following a medallion-style approach (staging → analytics).
 
+# Table of Contents
+
+1. [Setup Instructions](#setup-instructions)
+    - [1. Clone the Repository](#1-clone-the-repository)
+    - [2. Install Dependencies With Poetry](#2-install-dependencies-with-poetry)
+    - [3. Prepare Snowflake Environment](#3-prepare-snowflake-environment)
+    - [4. Configure Snowflake Connection](#4-configure-snowflake-connection)
+    - [5. Run Models](#5-run-models)
+    - [6. Run Tests](#6-run-tests)
+    - [7. Generate Documentation](#7-generate-documentation)
+2. [dbt Models Documentation](#dbt-models-documentation)
+    - [Staging Layer (Silver)](#staging-layer-silver)
+    - [Analytics Layer (Gold)](#analytics-layer-gold)
+3. [Deployment / Scheduling](#deployment--scheduling)
+4. [Assumptions](#assumptions)
+5. [Source Tables](#source-tables)
+
 ## Setup Instructions
 
 #### 1. Clone the Repository
