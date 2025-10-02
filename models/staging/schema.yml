@@ -2,18 +2,18 @@ version: 2
 
 models:
   - name: stg_orders
-    description: "Silver layer orders with customer name and derived columns"
+    description: "Silver layer: Orders enriched with customer name and derived fields"
     columns:
       - name: o_orderkey
-        description: "Primary key of orders"
+        description: "Primary key of the orders table (TPCH.orders.o_orderkey). Uniquely identifies each order."
         tests:
           - unique
           - not_null
       - name: o_custkey
-        description: "Customer key"
+        description: "Foreign key referencing TPCH.customer.c_custkey. Links an order to the customer who placed it."
       - name: c_name
-        description: "Customer name from customer table"
+        description: "Customer name from the TPCH.customer table. Joined via o_custkey = c_custkey."
       - name: order_year
-        description: "Year extracted from order date"
+        description: "Year extracted from o_orderdate. Used for aggregations and trend analysis."
       - name: total_price
-        description: "Order total price"
+        description: "Alias for the total price of the order carried forward from TPCH.orders (o_totalprice)."

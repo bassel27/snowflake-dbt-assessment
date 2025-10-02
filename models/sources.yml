@@ -2,9 +2,90 @@ version: 2
 
 sources:
   - name: tpch
+    description: "Snowflake TPC-H sample dataset (scale factor 1)"
     database: SNOWFLAKE_SAMPLE_DATA
     schema: tpch_sf1
     tables:
       - name: customer
+        description: "Customers in the TPCH dataset"
+        columns:
+          - name: c_custkey
+            description: "Primary key of customer"
+            tests:
+              - not_null
+              - unique
+          - name: c_name
+            description: "Customer name"
+          - name: c_address
+            description: "Customer address"
+          - name: c_nationkey
+            description: "Foreign key referencing nation.n_nationkey"
+          - name: c_phone
+            description: "Customer phone number"
+          - name: c_acctbal
+            description: "Account balance of the customer"
+          - name: c_mktsegment
+            description: "Market segment assigned to the customer"
+          - name: c_comment
+            description: "Customer comments"
+
       - name: orders
+        description: "Orders placed by customers"
+        columns:
+          - name: o_orderkey
+            description: "Primary key of the order"
+            tests:
+              - not_null
+              - unique
+          - name: o_custkey
+            description: "Foreign key referencing customer.c_custkey"
+          - name: o_orderstatus
+            description: "Order status code"
+          - name: o_totalprice
+            description: "Total price of the order"
+          - name: o_orderdate
+            description: "Order date"
+          - name: o_orderpriority
+            description: "Order priority"
+          - name: o_clerk
+            description: "Clerk handling the order"
+          - name: o_shippriority
+            description: "Shipping priority"
+          - name: o_comment
+            description: "Order comments"
+
       - name: lineitem
+        description: "Line items belonging to orders"
+        columns:
+          - name: l_orderkey
+            description: "Foreign key referencing orders.o_orderkey"
+          - name: l_partkey
+            description: "Part key of the line item"
+          - name: l_suppkey
+            description: "Supplier key of the line item"
+          - name: l_linenumber
+            description: "Line number within the order"
+          - name: l_quantity
+            description: "Quantity of the line item"
+          - name: l_extendedprice
+            description: "Extended price of the line item"
+          - name: l_discount
+            description: "Discount applied to the line item"
+          - name: l_tax
+            description: "Tax applied to the line item"
+          - name: l_returnflag
+            description: "Return flag of the line item"
+          - name: l_linestatus
+            description: "Line status code"
+          - name: l_shipdate
+            description: "Shipping date"
+          - name: l_commitdate
+            description: "Commit date"
+          - name: l_receiptdate
+            description: "Receipt date"
+          - name: l_shipinstruct
+            description: "Shipping instructions"
+          - name: l_shipmode
+            description: "Shipping mode"
+          - name: l_comment
+            description: "Line item comments"

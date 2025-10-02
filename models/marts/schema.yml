@@ -2,13 +2,13 @@ version: 2
 
 models:
   - name: customer_revenue
-    description: "Gold layer: aggregated revenue per customer"
+    description: "Gold layer: Aggregated revenue per customer across all orders"
     columns:
       - name: c_custkey
-        description: "Primary key of customer"
+        description: "Primary key of the customer. Sourced from TPCH.customer.c_custkey and used to uniquely identify each customer."
         tests:
           - not_null
       - name: customer_name
-        description: "Customer name"
+        description: "Full name of the customer (from TPCH.customer.c_name)."
       - name: total_revenue
-        description: "Total revenue per customer"
+        description: "Total revenue per customer. Calculated as the SUM(l_extendedprice * (1 - l_discount)) across all associated orders."
