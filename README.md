@@ -10,7 +10,7 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 
 
 #### 2. Install Dependenices With Poetry
-Dependenices include dbt-snowflake
+Dependenices include dbt-snowflake which will be installed using Poetry. If you don't have Poetry, you can use `pip install dbt-snowflake`
 `poetry install`
 `poetry shell`
 
