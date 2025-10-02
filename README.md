@@ -14,7 +14,7 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 
 #### 3. Prepare Snowflake Environment 
 Before configuring profiles.yml, you need to create a warehouse, database, and schema in your Snowflake trial account.
-Run the following SQL in your Snowflake console:
+Run the following SQL in your Snowflake console or worksheet:
 ```
 CREATE WAREHOUSE dev_wh
 WITH WAREHOUSE_SIZE = 'XSMALL'
@@ -63,23 +63,34 @@ dbt docs serve
 ## Models
 
 ### Staging Layer (Silver)
-- **stg_orders** - Selects from orders and joins with customer to add customer name
-- Adds derived fields: `order_year`, `total_price`
-- **Tests**: `o_orderkey` is unique and not null
+	•	stg_orders
+  	•	Source: orders table joined with customer.
+  	•	Purpose: Creates a cleaned, enriched version of orders with customer information.
+  	•	Derived columns:
+    	•	order_year → extracted from o_orderdate.
+    	•	total_price → carried from TPCH base table.
+    	•	Tests:
+      	•	o_orderkey is unique.
+      	•	o_orderkey is not null.
 
 ### Analytics Layer (Gold)
-- **customer_revenue** - Aggregates revenue per customer by joining orders and lineitem
-- Revenue calculation: `SUM(l_extendedprice * (1 - l_discount))`
-- Grouped by `c_custkey`
-- **Tests**: Customer key is not null
+	•	customer_revenue
+  	•	Source: Joins orders with lineitem.
+  	•	Purpose: Aggregates total revenue per customer.
+  	•	Business logic:
+    	•	Revenue = SUM(l_extendedprice * (1 - l_discount)).
+    	•	Grouped by: c_custkey (customer key).
+    	•	Includes: Customer name for readability in downstream analytics.
+    	•	Tests:
+      	•	c_custkey is not null (ensures valid customers).
 
 ## Deployment / Scheduling
-
 **In dbt Cloud:**
-- The project is linked to GitHub (`snowflake-dbt-assessment`)
+- The project is linked to GitHub.
 - A scheduled job runs daily to:
   1. `dbt run` → rebuild models
   2. `dbt test` → validate data
+<img width="718"  alt="image" src="https://github.com/user-attachments/assets/a171c83a-6005-4f21-bc4d-3d11f4764ee9" />
 
 This ensures transformed tables/views in Snowflake are always up-to-date.
 
