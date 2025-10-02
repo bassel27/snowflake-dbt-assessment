@@ -73,6 +73,26 @@ This document describes the structure and purpose of the models in the Snowflake
 **Model:** `stg_orders`  
 **Source:** `orders` table joined with `customer` table  
 **Purpose:** Creates a cleaned and enriched version of orders with customer information  
+**Columns:**
+Column
+Description
+Tests
+o_orderkey
+Primary key of the orders table (TPCH.orders.o_orderkey). Uniquely identifies each order.
+unique, not_null
+o_custkey
+Foreign key referencing TPCH.customer.c_custkey. Links an order to the customer who placed it.
+relationships → every value exists in customer.c_custkey
+c_name
+Customer name from the TPCH.customer table. Joined via o_custkey = c_custkey.
+None
+order_year
+Year extracted from o_orderdate. Used for aggregations and trend analysis.
+None
+total_price
+Alias for the total price of the order carried forward from TPCH.orders.o_totalprice.
+None
+
 
 **Derived Columns:**
 - `order_year` – extracted from `o_orderdate`
