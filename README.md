@@ -19,7 +19,7 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 4. [Assumptions](#assumptions)
 5. [Source Tables](#source-tables)
 
-## Setup Instructions
+# Setup Instructions
 
 #### 1. Clone the Repository
 `git clone https://github.com/bassel27/snowflake-dbt-assessment`
@@ -83,7 +83,7 @@ dbt docs serve
 
 This document describes the structure and purpose of the models in the Snowflake dbt project.
 
-## Models
+# Models
 
 ### Staging Layer (Silver)
 
@@ -114,7 +114,7 @@ This document describes the structure and purpose of the models in the Snowflake
 | customer_name | Full name of the customer (from TPCH.customer.c_name) for readability. | None |
 | total_revenue | Total revenue per customer. Calculated as the SUM(l_extendedprice * (1 - l_discount)) across all associated orders. | None |
 
-## Deployment / Scheduling
+# Deployment / Scheduling
 **In dbt Cloud:**
 - The project is linked to GitHub.
 - A scheduled job runs daily to:
@@ -123,13 +123,13 @@ This document describes the structure and purpose of the models in the Snowflake
 This ensures transformed tables/views in Snowflake are always up-to-date. 
 <img width="418"  alt="image" src="https://github.com/user-attachments/assets/a171c83a-6005-4f21-bc4d-3d11f4764ee9" />
 
-## Assumptions
+# Assumptions
 
 - Snowflake sample data (TPC-H) is available via `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`
 - Transformations are written to a dedicated database (`TPCH_TRANSFORMED`) and schema (`DEV` or `PROD`) depending on environment
 - Models are materialized as views by default (can be overridden in `dbt_project.yml`)
 
-## Source Tables
+# Source Tables
 
 The project uses the following source tables from TPC-H:
 | Table | Description | Tests |
