@@ -5,7 +5,7 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 ## Setup Instructions
 
 #### 1. Clone the Repository
-`https://github.com/bassel27/snowflake-dbt-assessment`
+`git clone https://github.com/bassel27/snowflake-dbt-assessment`
 `cd snowflake-dbt-assessment`
 
 
