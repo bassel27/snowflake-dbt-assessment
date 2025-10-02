@@ -74,7 +74,6 @@ This ensures transformed tables/views in Snowflake are always up-to-date.
 
 - Snowflake sample data (TPC-H) is available via `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`
 - Transformations are written to a dedicated database (`TPCH_TRANSFORMED`) and schema (`DEV` or `PROD`) depending on environment
-- For demonstration, a daily schedule is used, but in production the cadence should match data refresh frequency
 - Models are materialized as views by default (can be overridden in `dbt_project.yml`)
 
 ## Source Tables
