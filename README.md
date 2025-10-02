@@ -74,23 +74,14 @@ This document describes the structure and purpose of the models in the Snowflake
 **Source:** `orders` table joined with `customer` table  
 **Purpose:** Creates a cleaned and enriched version of orders with customer information  
 
-
+**Columns & Tests:**
 | Column | Description | Tests |
 |--------|-------------|-------|
 | o_orderkey | Primary key of the orders table (TPCH.orders.o_orderkey). Uniquely identifies each order. | unique, not_null |
-| o_custkey | Foreign key referencing TPCH.customer.c_custkey. Links an order to the customer who placed it. | relationships → every value exists in customer.c_custkey |
+| o_custkey | Foreign key referencing TPCH.customer.c_custkey. Links an order to the customer who placed it. | relationships → validates every order references an existing customer  (enforcing referential integrity) |
 | c_name | Customer name from the TPCH.customer table. Joined via o_custkey = c_custkey. | None |
-| order_year | Year extracted from o_orderdate. Used for aggregations and trend analysis. | None |
+| order_year | Year extracted from o_orderdate.  | None |
 | total_price | Alias for the total price of the order carried forward from TPCH.orders.o_totalprice. | None |
-
-**Derived Columns:**
-- `order_year` – extracted from `o_orderdate`
-- `total_price` – carried from TPCH base table
-
-**Tests:**
-- `o_orderkey` is unique
-- `o_orderkey` is not null
--  `o_custkey` → Validates that every order references an existing customer (customer.c_custkey), enforcing referential integrity.
 
 ### Analytics Layer (Gold)
 
@@ -98,13 +89,13 @@ This document describes the structure and purpose of the models in the Snowflake
 **Source:** Joins `orders` with `lineitem`  
 **Purpose:** Aggregates total revenue per customer  
 
-**Business Logic:**
-- Revenue = `SUM(l_extendedprice * (1 - l_discount))`
-- Grouped by `c_custkey` (customer key)
-- Includes `customer_name` for readability in downstream analytics
+**Columns & Tests:**
 
-**Tests:**
-- `c_custkey` is not null (ensures valid customers)
+| Column | Description | Tests |
+|--------|-------------|-------|
+| c_custkey | Primary key of the customer. Sourced from TPCH.customer.c_custkey and used to uniquely identify each customer. | not_null |
+| customer_name | Full name of the customer (from TPCH.customer.c_name) for readability. | None |
+| total_revenue | Total revenue per customer. Calculated as the SUM(l_extendedprice * (1 - l_discount)) across all associated orders. | None |
 
 ## Deployment / Scheduling
 **In dbt Cloud:**
