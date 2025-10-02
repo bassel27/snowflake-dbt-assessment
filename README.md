@@ -65,26 +65,26 @@ dbt docs serve
 ## Models
 
 ### Staging Layer (Silver)
-	•	stg_orders
-  	•	Source: orders table joined with customer.
-  	•	Purpose: Creates a cleaned, enriched version of orders with customer information.
-  	•	Derived columns:
-    	•	order_year → extracted from o_orderdate.
-    	•	total_price → carried from TPCH base table.
-    	•	Tests:
-      	•	o_orderkey is unique.
-      	•	o_orderkey is not null.
+•	stg_orders
+	•	Source: orders table joined with customer.
+	•	Purpose: Creates a cleaned, enriched version of orders with customer information.
+	•	Derived columns:
+		•	order_year → extracted from o_orderdate.
+		•	total_price → carried from TPCH base table.
+		•	Tests:
+		•	o_orderkey is unique.
+		•	o_orderkey is not null.
 
 ### Analytics Layer (Gold)
-	•	customer_revenue
-  	•	Source: Joins orders with lineitem.
-  	•	Purpose: Aggregates total revenue per customer.
-  	•	Business logic:
-    	•	Revenue = SUM(l_extendedprice * (1 - l_discount)).
-    	•	Grouped by: c_custkey (customer key).
-    	•	Includes: Customer name for readability in downstream analytics.
-    	•	Tests:
-      	•	c_custkey is not null (ensures valid customers).
+•	customer_revenue
+	•	Source: Joins orders with lineitem.
+	•	Purpose: Aggregates total revenue per customer.
+	•	Business logic:
+		•	Revenue = SUM(l_extendedprice * (1 - l_discount)).
+		•	Grouped by: c_custkey (customer key).
+		•	Includes: Customer name for readability in downstream analytics.
+		•	Tests:
+	      	•	c_custkey is not null (ensures valid customers).
 
 ## Deployment / Scheduling
 **In dbt Cloud:**
@@ -92,9 +92,8 @@ dbt docs serve
 - A scheduled job runs daily to:
   1. `dbt run` → rebuild models
   2. `dbt test` → validate data
-<img width="718"  alt="image" src="https://github.com/user-attachments/assets/a171c83a-6005-4f21-bc4d-3d11f4764ee9" />
-
-This ensures transformed tables/views in Snowflake are always up-to-date.
+This ensures transformed tables/views in Snowflake are always up-to-date. 
+<img width="418"  alt="image" src="https://github.com/user-attachments/assets/a171c83a-6005-4f21-bc4d-3d11f4764ee9" />
 
 ## Assumptions
 
