@@ -9,8 +9,10 @@ This project demonstrates using dbt (data build tool) with Snowflake to transfor
 `cd snowflake-dbt-assessment`
 
 
-#### 2. Install dbt with Snowflake Adapter
-`pip install dbt-snowflake`
+#### 2. Install Dependenices With Poetry
+Dependenices include dbt-snowflake
+`poetry install`
+`poetry env activate`
 
 #### 3. Prepare Snowflake Environment 
 Before configuring profiles.yml, you need to create a warehouse, database, and schema in your Snowflake trial account.
