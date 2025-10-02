@@ -132,6 +132,8 @@ This ensures transformed tables/views in Snowflake are always up-to-date.
 ## Source Tables
 
 The project uses the following source tables from TPC-H:
-- `customer` - Customer information
-- `orders` - Order headers
-- `lineitem` - Order line items
+| Table | Description | Tests |
+|-------|-------------|-------|
+| customer | Customer information | c_custkey → unique, not null |
+| orders | Order headers | No source-level tests in this example |
+| lineitem | Order line items | No source-level tests in this example |
