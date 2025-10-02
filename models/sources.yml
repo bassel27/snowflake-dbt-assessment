@@ -11,6 +11,9 @@ sources:
         columns:
           - name: c_custkey
             description: "Primary key of customer"
+            tests:
+              - unique
+              - not_null
           - name: c_name
             description: "Customer name"
           - name: c_address

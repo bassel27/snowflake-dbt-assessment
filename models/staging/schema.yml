@@ -11,6 +11,10 @@ models:
           - not_null
       - name: o_custkey
         description: "Foreign key referencing TPCH.customer.c_custkey. Links an order to the customer who placed it."
+        tests:
+          - relationships:
+              to: ref('customer')   # For every value in o_custkey, dbt checks that the same value exists in customer.c_custkey.
+              field: c_custkey
       - name: c_name
         description: "Customer name from the TPCH.customer table. Joined via o_custkey = c_custkey."
       - name: order_year
